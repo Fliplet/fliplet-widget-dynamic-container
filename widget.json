@@ -25,6 +25,8 @@
     "dependencies": [
       "fliplet-core"
     ],
-    "assets": []
+    "assets": [
+      "js/build.js"
+    ]
   }
 }
