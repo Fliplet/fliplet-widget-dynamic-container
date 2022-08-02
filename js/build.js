@@ -1,11 +1,20 @@
 Fliplet().then(function() {
   Fliplet.Widget.instance('dynamic-container', function(data, parentContext) {
-    var $el = $(this);
+    const $el = $(this);
 
-    // TODO: fetch required data
-    console.log(this, 'Data', data, 'parent context', parentContext);
+    let loadData;
 
-    Fliplet.Widget.initializeChildren(this, { foo: 'bar'});
+    if (data.dataSourceId) {
+      loadData = Fliplet.DataSources.connect(data.dataSourceId).then((connection) => {
+        return connection.find();
+      });
+    } else {
+      loadData = Promise.resolve();
+    }
+
+    loadData.then((result) => {
+      Fliplet.Widget.initializeChildren(this, result);
+    });
   }, {
     supportsDynamicContext: true
   });
