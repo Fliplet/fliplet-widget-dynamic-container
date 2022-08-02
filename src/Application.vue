@@ -1,19 +1,31 @@
 <template>
   <div>
-    <h1>Your dynamic-container widget will be added here.</h1>
-    <First-Component></First-Component>
+    <Data-Source-Provider ref="dataSourceProvider" v-on:saved="dataSourceProviderSave"></Data-Source-Provider>
   </div>
 </template>
 
 <script>
-import FirstComponent from './components/FirstComponent';
+import state from './state';
+import DataSourceProvider from './components/DataSourceProvider';
 
 export default {
   data() {
     return {};
   },
   components: {
-    FirstComponent
+    DataSourceProvider
+  },
+  methods: {
+    dataSourceProviderSave() {
+      Fliplet.Widget.save(state).then(() => {
+        Fliplet.Widget.complete();
+      });
+    }
+  },
+  mounted() {
+    Fliplet.Widget.onSaveRequest(() => {
+      this.$refs.dataSourceProvider.forwardSaveRequest();
+    });
   }
 };
 </script>
