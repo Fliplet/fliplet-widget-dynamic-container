@@ -1,8 +1,17 @@
 Fliplet().then(function() {
-  Fliplet.Widget.instance('dynamic-container', function(data, parentContext) {
-    const $el = $(this);
+  Fliplet.Widget.instance('dynamic-container', function(data, parent) {
+    // const $el = $(this);
 
     let loadData;
+
+    const vm = new Vue({
+      data: {
+        context: [],
+        parent: parent
+      }
+    });
+
+    Fliplet.Widget.initializeChildren(this, vm);
 
     if (data.dataSourceId) {
       loadData = Fliplet.DataSources.connect(data.dataSourceId).then((connection) => {
@@ -13,7 +22,8 @@ Fliplet().then(function() {
     }
 
     loadData.then((result) => {
-      Fliplet.Widget.initializeChildren(this, result);
+      vm.context.length = 0;
+      vm.context.push(...result);
     });
   }, {
     supportsDynamicContext: true

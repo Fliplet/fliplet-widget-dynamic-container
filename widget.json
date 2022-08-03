@@ -23,6 +23,7 @@
   },
   "build": {
     "dependencies": [
+      "vue.js",
       "fliplet-core",
       "fliplet-datasources"
     ],
