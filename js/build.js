@@ -15,28 +15,33 @@ Fliplet().then(function() {
           parent: parent
         },
         methods: {
-          _setData(data) {
-            return Fliplet.Hooks.run('containerDataRetrieved', data).then(() => {
+          _setData(key, data) {
+            return Fliplet.Hooks.run('containerDataRetrieved', { container: this, key, data }).then(() => {
               if (!data) {
                 return;
               }
 
               if (Array.isArray(data)) {
-                this.context.length = 0;
-                this.context.push(...data);
+                this[key].length = 0;
+                this[key].push(...data);
               } else {
-                this.context = data;
+                this[key] = data;
               }
             });
           },
-          load(fn) {
+          load(key, fn) {
+            if (typeof key === 'function') {
+              fn = key;
+              key = 'context';
+            }
+
             let result = fn();
 
             if (!(result instanceof Promise)) {
               result = Promise.resolve(result);
             }
 
-            return result.then(this._setData);
+            return result.then(res => this._setData(key, res));
           }
         }
       });
@@ -52,7 +57,7 @@ Fliplet().then(function() {
       }
 
       loadData.then((result) => {
-        vm._setData(result).then(() => {
+        vm._setData('context', result).then(() => {
           resolve(vm);
         });
       }).catch((err) => {
