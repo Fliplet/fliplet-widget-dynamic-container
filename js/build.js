@@ -21,11 +21,15 @@ Fliplet().then(function() {
                 return;
               }
 
+              if (typeof this[key] === 'undefined') {
+                return this.$set(this.context, key, data);
+              }
+
               if (Array.isArray(data)) {
-                this[key].length = 0;
-                this[key].push(...data);
+                this.context.length = 0;
+                this.context.push(...data);
               } else {
-                this[key] = data;
+                this.context = data;
               }
             });
           },
