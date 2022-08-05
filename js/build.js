@@ -105,7 +105,7 @@ Fliplet.Container.get = function(name, options) {
 
       if (!container) {
         if (options.ts > 5000) {
-          return Promise.reject('Container not found after ' + Math.round(options.ts) + ' seconds.');
+          return Promise.reject('Container not found after ' + Math.ceil(options.ts / 1000) + ' seconds.');
         }
 
         // Containers can render over time, so we need to retry later in the process
