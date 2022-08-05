@@ -1,19 +1,22 @@
 <template>
   <div>
     <Data-Source-Provider ref="dataSourceProvider" v-on:saved="dataSourceProviderSave"></Data-Source-Provider>
+    <Rendering-Option></Rendering-Option>
   </div>
 </template>
 
 <script>
 import state from './state';
 import DataSourceProvider from './components/DataSourceProvider';
+import RenderingOption from './components/RenderingOption';
 
 export default {
   data() {
     return {};
   },
   components: {
-    DataSourceProvider
+    DataSourceProvider,
+    RenderingOption
   },
   methods: {
     dataSourceProviderSave() {

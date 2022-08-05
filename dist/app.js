@@ -163,6 +163,8 @@ var render = function () {
         ref: "dataSourceProvider",
         on: { saved: _vm.dataSourceProviderSave },
       }),
+      _vm._v(" "),
+      _c("Rendering-Option"),
     ],
     1
   )
@@ -189,12 +191,15 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
 /* harmony import */ var _components_DataSourceProvider__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _components_RenderingOption__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(13);
 //
 //
 //
 //
 //
 //
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -202,7 +207,8 @@ __webpack_require__.r(__webpack_exports__);
     return {};
   },
   components: {
-    DataSourceProvider: _components_DataSourceProvider__WEBPACK_IMPORTED_MODULE_1__["default"]
+    DataSourceProvider: _components_DataSourceProvider__WEBPACK_IMPORTED_MODULE_1__["default"],
+    RenderingOption: _components_RenderingOption__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   methods: {
     dataSourceProviderSave: function dataSourceProviderSave() {
@@ -460,6 +466,219 @@ function normalizeComponent(
   }
 }
 
+
+/***/ }),
+/* 13 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _RenderingOption_vue_vue_type_template_id_8984d8be___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(14);
+/* harmony import */ var _RenderingOption_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(16);
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(12);
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _RenderingOption_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _RenderingOption_vue_vue_type_template_id_8984d8be___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _RenderingOption_vue_vue_type_template_id_8984d8be___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "src/components/RenderingOption.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+/* 14 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RenderingOption_vue_vue_type_template_id_8984d8be___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(15);
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RenderingOption_vue_vue_type_template_id_8984d8be___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RenderingOption_vue_vue_type_template_id_8984d8be___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+/* 15 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "form-group clearfix" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-sm-8" }, [
+      _c("div", { staticClass: "radio radio-icon" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.renderingOption,
+              expression: "renderingOption",
+            },
+          ],
+          attrs: { type: "radio", id: "render-default", value: "default" },
+          domProps: { checked: _vm._q(_vm.renderingOption, "default") },
+          on: {
+            change: function ($event) {
+              _vm.renderingOption = "default"
+            },
+          },
+        }),
+        _vm._v(" "),
+        _vm._m(1),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "radio radio-icon" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.renderingOption,
+              expression: "renderingOption",
+            },
+          ],
+          attrs: { type: "radio", id: "render-wait", value: "wait" },
+          domProps: { checked: _vm._q(_vm.renderingOption, "wait") },
+          on: {
+            change: function ($event) {
+              _vm.renderingOption = "wait"
+            },
+          },
+        }),
+        _vm._v(" "),
+        _vm._m(2),
+      ]),
+    ]),
+  ])
+}
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-sm-4 control-label" }, [
+      _c("label", [
+        _vm._v("Choose how components inside the container should be rendered"),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "render-default" } }, [
+      _c("span", { staticClass: "check" }, [
+        _c("i", { staticClass: "fa fa-circle" }),
+      ]),
+      _vm._v(" Early rendering (default)"),
+      _c("br"),
+      _c("p", { staticClass: "small" }, [
+        _vm._v(
+          "Render components as soon as possible, while the data is being fetched. This requires children components to support "
+        ),
+        _c("strong", [_vm._v("reactive changes")]),
+        _vm._v(" to the context data."),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "render-wait" } }, [
+      _c("span", { staticClass: "check" }, [
+        _c("i", { staticClass: "fa fa-circle" }),
+      ]),
+      _vm._v(" Delayed rendering"),
+      _c("br"),
+      _c("p", { staticClass: "small" }, [
+        _vm._v(
+          "Render components once all the data has been fetched and it's ready."
+        ),
+      ]),
+    ])
+  },
+]
+render._withStripped = true
+
+
+
+/***/ }),
+/* 16 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_3_0_node_modules_vue_loader_lib_index_js_vue_loader_options_RenderingOption_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(17);
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_3_0_node_modules_vue_loader_lib_index_js_vue_loader_options_RenderingOption_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+/* 17 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _state_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      provider: null,
+      renderingOption: _state_js__WEBPACK_IMPORTED_MODULE_0__["default"].renderingOption || 'default'
+    };
+  },
+  watch: {
+    renderingOption: function renderingOption(val) {
+      _state_js__WEBPACK_IMPORTED_MODULE_0__["default"].renderingOption = val;
+    }
+  },
+  mounted: function mounted() {}
+});
 
 /***/ })
 /******/ ]);
