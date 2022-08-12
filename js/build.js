@@ -1,6 +1,6 @@
 Fliplet.Container = Fliplet.Container || {};
 
-const instances = [];
+const dynamicContainerInstances = [];
 
 Fliplet().then(function() {
   Fliplet.Widget.instance('dynamic-container', function(data, parent) {
@@ -78,7 +78,7 @@ Fliplet().then(function() {
       });
     });
 
-    instances.push(container);
+    dynamicContainerInstances.push(container);
   }, {
     supportsDynamicContext: true
   });
@@ -88,7 +88,7 @@ Fliplet.Container.get = function(name, options) {
   options = options || { ts: 10 };
 
   return Fliplet().then(function() {
-    return Promise.all(instances).then(function(containers) {
+    return Promise.all(dynamicContainerInstances).then(function(containers) {
       var container;
 
       if (typeof name === 'undefined') {
@@ -125,7 +125,7 @@ Fliplet.Container.get = function(name, options) {
 
 Fliplet.Container.getAll = function(name) {
   return Fliplet().then(function() {
-    return Promise.all(instances).then(function(containers) {
+    return Promise.all(dynamicContainerInstances).then(function(containers) {
       if (typeof name === 'undefined') {
         return containers;
       }
