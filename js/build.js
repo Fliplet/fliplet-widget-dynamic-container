@@ -1,4 +1,4 @@
-Fliplet.Container = Fliplet.Container || {};
+Fliplet.DynamicContainer = Fliplet.DynamicContainer || {};
 
 const dynamicContainerInstances = [];
 
@@ -12,8 +12,11 @@ Fliplet().then(function() {
       let loadData;
 
       const vm = new Vue({
+        id: data.id,
+        name: data.name,
         data: {
           context: [],
+          renderingOption,
           parent: parent
         },
         methods: {
@@ -84,7 +87,7 @@ Fliplet().then(function() {
   });
 });
 
-Fliplet.Container.get = function(name, options) {
+Fliplet.DynamicContainer.get = function(name, options) {
   options = options || { ts: 10 };
 
   return Fliplet().then(function() {
@@ -113,7 +116,7 @@ Fliplet.Container.get = function(name, options) {
           setTimeout(function() {
             options.ts = options.ts * 1.5;
 
-            Fliplet.Container.get(name, options).then(resolve);
+            Fliplet.DynamicContainer.get(name, options).then(resolve);
           }, options.ts);
         });
       }
@@ -123,7 +126,7 @@ Fliplet.Container.get = function(name, options) {
   });
 };
 
-Fliplet.Container.getAll = function(name) {
+Fliplet.DynamicContainer.getAll = function(name) {
   return Fliplet().then(function() {
     return Promise.all(dynamicContainerInstances).then(function(containers) {
       if (typeof name === 'undefined') {
