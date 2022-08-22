@@ -11,6 +11,8 @@ Fliplet().then(function() {
 
       let loadData;
 
+      const $emptyStateContainers = $(this).find('[data-widget-package="com.fliplet.empty-state-container"]');
+
       const vm = new Vue({
         id: data.id,
         name: data.name,
@@ -36,7 +38,12 @@ Fliplet().then(function() {
               } else {
                 this.context = data;
               }
+
+              this._updateVisibility();
             });
+          },
+          _updateVisibility() {
+            $emptyStateContainers.toggleClass('visible', !this.context || !this.context.length);
           },
           load(key, fn) {
             if (typeof key === 'function') {
