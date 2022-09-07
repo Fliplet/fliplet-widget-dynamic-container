@@ -7,11 +7,12 @@ Fliplet().then(function() {
     const renderingOption = data.renderingOption || 'default';
 
     const container = new Promise((resolve) => {
-      // const $el = $(this);
-
       let loadData;
 
       const $emptyStateContainers = $(this).find('[data-widget-package="com.fliplet.empty-state-container"]');
+
+      // Find child props
+      const $props = $(this).findUntil('fl-prop[data-engine]', 'fl-dynamic-container, fl-helper, fl-repeated-list');
 
       const vm = new Vue({
         id: data.id,
@@ -40,10 +41,31 @@ Fliplet().then(function() {
               }
 
               this._updateVisibility();
+              this._updatePropTags();
             });
           },
           _updateVisibility() {
             $emptyStateContainers.toggleClass('visible', !this.context || !this.context.length);
+          },
+          _updatePropTags() {
+            const $vm = this;
+
+            $props.each(function() {
+              const $el = $(this);
+              const path = $el.data('path');
+
+              if (!path) {
+                return;
+              }
+
+              let value = _.get($vm, path);
+
+              if (typeof value === 'object') {
+                value = JSON.stringify(value);
+              }
+
+              $el.html(value);
+            });
           },
           load(key, fn) {
             if (typeof key === 'function') {
