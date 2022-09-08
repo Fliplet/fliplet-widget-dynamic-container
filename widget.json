@@ -25,7 +25,8 @@
     "dependencies": [
       "vue.js",
       "fliplet-core",
-      "fliplet-datasources"
+      "fliplet-datasources",
+      "fliplet-helper"
     ],
     "assets": [
       "js/build.js"
