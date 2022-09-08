@@ -90,7 +90,7 @@ Fliplet().then(function() {
 
       if (data.dataSourceId) {
         loadData = Fliplet.DataSources.connect(data.dataSourceId).then((connection) => {
-          return connection.find();
+          return connection.createCursor(_.pick(data, ['limit']));
         });
       } else {
         loadData = Promise.resolve();

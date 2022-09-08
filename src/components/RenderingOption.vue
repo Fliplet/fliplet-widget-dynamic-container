@@ -26,7 +26,6 @@ import state from '../state.js';
 export default {
   data() {
     return {
-      provider: null,
       renderingOption: state.renderingOption || 'default'
     };
   },

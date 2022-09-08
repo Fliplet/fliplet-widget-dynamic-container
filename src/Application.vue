@@ -1,6 +1,7 @@
 <template>
   <div>
     <Data-Source-Provider ref="dataSourceProvider" v-on:saved="dataSourceProviderSave"></Data-Source-Provider>
+    <Query-Option></Query-Option>
     <Rendering-Option></Rendering-Option>
   </div>
 </template>
@@ -8,6 +9,7 @@
 <script>
 import state from './state';
 import DataSourceProvider from './components/DataSourceProvider';
+import QueryOption from './components/QueryOption';
 import RenderingOption from './components/RenderingOption';
 
 export default {
@@ -16,6 +18,7 @@ export default {
   },
   components: {
     DataSourceProvider,
+    QueryOption,
     RenderingOption
   },
   methods: {
