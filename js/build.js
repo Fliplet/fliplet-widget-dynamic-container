@@ -33,7 +33,7 @@ Fliplet().then(function() {
                 return this.$set(this.context, key, data);
               }
 
-              if (Array.isArray(data)) {
+              if (Array.isArray(data) && typeof data.update !== 'function') {
                 this.context.length = 0;
                 this.context.push(...data);
               } else {
@@ -90,7 +90,11 @@ Fliplet().then(function() {
 
       if (data.dataSourceId) {
         loadData = Fliplet.DataSources.connect(data.dataSourceId).then((connection) => {
-          return connection.createCursor(_.pick(data, ['limit']));
+          const cursorData = _.pick(data, ['limit']);
+
+          return Fliplet.Hooks.run('containerBeforeRetrieveData', { container: this, data: cursorData }).then(() => {
+            return connection.createCursor(cursorData);
+          });
         });
       } else {
         loadData = Promise.resolve();
@@ -105,7 +109,7 @@ Fliplet().then(function() {
           resolve(vm);
         });
       }).catch((err) => {
-        console.error(err);
+        console.error('[DYNAMIC CONTAINER] Error fetching data', err);
         resolve(vm);
       });
     });
