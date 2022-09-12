@@ -93,7 +93,7 @@ Fliplet().then(function() {
           const cursorData = _.pick(data, ['limit']);
 
           return Fliplet.Hooks.run('containerBeforeRetrieveData', { container: this, data: cursorData }).then(() => {
-            return connection.createCursor(cursorData);
+            return connection.findWithCursor(cursorData);
           });
         });
       } else {
