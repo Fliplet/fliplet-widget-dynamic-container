@@ -12,7 +12,7 @@ Fliplet().then(function() {
       const $emptyStateContainers = $(this).find('[data-widget-package="com.fliplet.empty-state-container"]');
 
       // Find child props
-      const $props = $(this).findUntil('fl-prop[data-engine]', 'fl-dynamic-container, fl-helper, fl-repeated-list');
+      const $props = $(this).findUntil('fl-prop[data-engine]', 'fl-dynamic-container, fl-helper, fl-list-repeater');
 
       const vm = new Vue({
         id: data.id,
