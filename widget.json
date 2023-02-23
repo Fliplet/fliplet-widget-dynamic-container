@@ -7,7 +7,7 @@
   "tags": ["type:component", "category:layout"],
   "provider_only": false,
   "references": [
-    "html:richContent"
+    "content:richContent"
   ],
   "html_tag": "div",
   "interface": {
