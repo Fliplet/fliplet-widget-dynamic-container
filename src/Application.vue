@@ -1,25 +1,26 @@
 <template>
   <div>
     <Data-Source-Provider ref="dataSourceProvider" v-on:saved="dataSourceProviderSave"></Data-Source-Provider>
-    <Query-Option></Query-Option>
-    <Rendering-Option></Rendering-Option>
+    <!--<Query-Option></Query-Option>-->
+    <!--<Rendering-Option></Rendering-Option>-->
   </div>
 </template>
 
 <script>
 import state from './state';
 import DataSourceProvider from './components/DataSourceProvider';
-import QueryOption from './components/QueryOption';
-import RenderingOption from './components/RenderingOption';
+
+// import QueryOption from './components/QueryOption';
+// import RenderingOption from './components/RenderingOption';
 
 export default {
   data() {
     return {};
   },
   components: {
-    DataSourceProvider,
-    QueryOption,
-    RenderingOption
+    DataSourceProvider
+    // QueryOption,
+    // RenderingOption
   },
   methods: {
     dataSourceProviderSave() {
