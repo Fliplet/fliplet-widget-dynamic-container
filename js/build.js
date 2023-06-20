@@ -7,7 +7,7 @@ Fliplet().then(function() {
     const renderingOption = data.renderingOption || 'default';
 
     const container = new Promise((resolve) => {
-      let loadData;
+      // let loadData;
 
       const $emptyStateContainers = $(this).find('[data-widget-package="com.fliplet.empty-state-container"]');
 
@@ -20,7 +20,8 @@ Fliplet().then(function() {
         data: {
           context: [],
           renderingOption,
-          parent: parent
+          parent: parent,
+          dataSourceConnection: undefined
         },
         methods: {
           _setData(key, data) {
@@ -80,13 +81,19 @@ Fliplet().then(function() {
             }
 
             return result.then(res => this._setData(key, res));
+          },
+          connection() {
+            if (!this.dataSourceConnection) {
+              this.dataSourceConnection = Fliplet.DataSources.connect(data.dataSourceId);
+            }
+
+            return this.dataSourceConnection;
           }
         }
       });
 
-      if (renderingOption === 'default') {
-        Fliplet.Widget.initializeChildren(this, vm);
-      }
+      /*
+      // Shared state context is disabled (ref ID-2919)
 
       if (data.dataSourceId) {
         loadData = Fliplet.DataSources.connect(data.dataSourceId).then((connection) => {
@@ -112,6 +119,10 @@ Fliplet().then(function() {
         console.error('[DYNAMIC CONTAINER] Error fetching data', err);
         resolve(vm);
       });
+      */
+
+      Fliplet.Widget.initializeChildren(this, vm);
+      resolve(vm);
     });
 
     dynamicContainerInstances.push(container);
