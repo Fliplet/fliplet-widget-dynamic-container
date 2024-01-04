@@ -10,11 +10,11 @@ export default {
     return {
       provider: null,
       settings: {
-        dataSourceTitle: 'Source of the data',
+        dataSourceTitle: 'Your list data',
         dataSourceId: state.dataSourceId,
         appId: Fliplet.Env.get('appId'),
         default: {
-          name: 'Source of the data',
+          name: 'Your list data',
           entries: [],
           columns: []
         },
