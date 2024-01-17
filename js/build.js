@@ -92,35 +92,6 @@ Fliplet().then(function() {
         }
       });
 
-      /*
-      // Shared state context is disabled (ref ID-2919)
-
-      if (data.dataSourceId) {
-        loadData = Fliplet.DataSources.connect(data.dataSourceId).then((connection) => {
-          const cursorData = _.pick(data, ['limit']);
-
-          return Fliplet.Hooks.run('containerBeforeRetrieveData', { container: this, data: cursorData }).then(() => {
-            return connection.findWithCursor(cursorData);
-          });
-        });
-      } else {
-        loadData = Promise.resolve();
-      }
-
-      loadData.then((result) => {
-        vm._setData('context', result).then(() => {
-          if (renderingOption === 'wait') {
-            Fliplet.Widget.initializeChildren(this, vm);
-          }
-
-          resolve(vm);
-        });
-      }).catch((err) => {
-        console.error('[DYNAMIC CONTAINER] Error fetching data', err);
-        resolve(vm);
-      });
-      */
-
       Fliplet.Widget.initializeChildren(this, vm);
       resolve(vm);
     });
