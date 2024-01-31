@@ -4,14 +4,6 @@
   "description": "dynamic-container",
   "author": "",
   "private": true,
-  "scripts": {
-    "watch": "gulp build && gulp watch",
-    "build": "gulp build"
-  },
-  "dependencies": {
-    "core-js": "^3.1.4",
-    "regenerator-runtime": "^0.13.2"
-  },
   "devDependencies": {
     "eslint": "^6.8.0",
     "eslint-config-fliplet": "^1.0.11",

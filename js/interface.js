@@ -19,7 +19,7 @@ Fliplet.Widget.generateInterface({
       },
       beforeSave: function(value) {
         this.value = value;
-      },
+      }
     }
   ]
 });
