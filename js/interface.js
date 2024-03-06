@@ -18,7 +18,7 @@ Fliplet.Widget.generateInterface({
         };
       },
       beforeSave: function(value) {
-        this.value = value;
+        return value && value.id;
       }
     }
   ]
