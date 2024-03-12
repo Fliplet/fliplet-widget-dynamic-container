@@ -1,1 +1,4 @@
-<fl-dynamic-container data-widget-name="dynamic-container" data-dynamic-container-id="{{id}}" data-view="content" data-node-name="Content">{{{ content }}}</fl-dynamic-container>
+<fl-dynamic-container data-widget-name="dynamic-container" data-dynamic-container-id="{{id}}" data-view="content" data-node-name="Content">
+  <template type="text/html" name="empty"><div data-view-placeholder>Drag &amp; drop <strong>List repeater</strong> or <strong>Record container</strong> to render dynamic data</div></template>
+  {{{ content }}}
+</fl-dynamic-container>
