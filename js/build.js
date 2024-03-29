@@ -48,7 +48,7 @@
     options = options || { ts: 10 };
 
     return Fliplet().then(function() {
-      return Promise.all(_.values(dynamicContainerInstances)).then(function(containers) {
+      return Promise.all(Object.values(dynamicContainerInstances)).then(function(containers) {
         var container;
 
         if (typeof name === 'undefined') {
@@ -85,7 +85,7 @@
 
   Fliplet.DynamicContainer.getAll = function(name) {
     return Fliplet().then(function() {
-      return Promise.all(_.values(dynamicContainerInstances)).then(function(containers) {
+      return Promise.all(Object.values(dynamicContainerInstances)).then(function(containers) {
         if (typeof name === 'undefined') {
           return containers;
         }
