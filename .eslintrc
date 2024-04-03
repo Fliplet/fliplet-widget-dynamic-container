@@ -2,12 +2,8 @@
   "root": true,
   "extends": [
     "eslint:recommended",
-    "fliplet",
-    "plugin:vue/essential"
+    "fliplet"
   ],
-  "globals": {
-    "Vue": true
-  },
   "rules": {
     "no-new": 0
   }
