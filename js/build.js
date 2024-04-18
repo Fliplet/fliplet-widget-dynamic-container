@@ -44,23 +44,21 @@
     });
   });
 
-  Fliplet.DynamicContainer.get = function(name, options) {
+  Fliplet.DynamicContainer.get = function(filter, options) {
+    if (typeof filter !== 'object' || typeof filter !== 'function') {
+      filter = { id: filter };
+    }
+
     options = options || { ts: 10 };
 
     return Fliplet().then(function() {
       return Promise.all(Object.values(dynamicContainerInstances)).then(function(containers) {
         var container;
 
-        if (typeof name === 'undefined') {
+        if (typeof filter === 'undefined') {
           container = containers.length ? containers[0] : undefined;
         } else {
-          containers.some(function(vm) {
-            if (vm.name === name) {
-              container = vm;
-
-              return true;
-            }
-          });
+          container = _.find(containers, filter);
         }
 
         if (!container) {
@@ -73,7 +71,7 @@
             setTimeout(function() {
               options.ts = options.ts * 1.5;
 
-              Fliplet.DynamicContainer.get(name, options).then(resolve);
+              Fliplet.DynamicContainer.get(filter, options).then(resolve);
             }, options.ts);
           });
         }
@@ -83,16 +81,18 @@
     });
   };
 
-  Fliplet.DynamicContainer.getAll = function(name) {
+  Fliplet.DynamicContainer.getAll = function(filter) {
+    if (typeof filter !== 'object' || typeof filter !== 'function') {
+      filter = { id: filter };
+    }
+
     return Fliplet().then(function() {
       return Promise.all(Object.values(dynamicContainerInstances)).then(function(containers) {
-        if (typeof name === 'undefined') {
+        if (typeof filter === 'undefined') {
           return containers;
         }
 
-        return containers.filter(function(form) {
-          return form.name === name;
-        });
+        return _.filter(containers, filter);
       });
     });
   };
