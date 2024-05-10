@@ -14,7 +14,14 @@ Fliplet.Widget.generateInterface({
             entries: [],
             columns: []
           },
-          accessRules: []
+          accessRules: [
+            {
+              allow: 'all',
+              type: [
+                'select'
+              ]
+            }
+          ]
         };
       },
       beforeSave: function(value) {
