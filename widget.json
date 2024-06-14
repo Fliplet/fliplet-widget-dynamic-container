@@ -9,7 +9,8 @@
   "references": ["content:richContent"],
   "settings": {
     "interfaceWidgetPackage": "com.fliplet.helper-configuration",
-    "asyncRendering": true
+    "asyncRendering": true,
+    "hideThemeSettings": true
   },
   "html_tag": "div",
   "interface": {
