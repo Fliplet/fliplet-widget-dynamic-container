@@ -16,11 +16,11 @@
   "interface": {
     "assets": [
       "js/interface.js", 
-      "css/interface.css"
+      "css/global.css"
     ]
   },
   "build": {
     "dependencies": ["fliplet-core", "fliplet-datasources"],
-    "assets": ["js/build.js"]
+    "assets": ["js/build.js", "css/global.css"]
   }
 }
