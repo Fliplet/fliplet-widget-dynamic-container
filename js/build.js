@@ -44,41 +44,35 @@
     });
   });
 
-  Fliplet.DynamicContainer.get = function(filter, options) {
-    if (typeof filter !== 'object' || typeof filter !== 'function') {
-      filter = { id: filter };
+  Fliplet.DynamicContainer.get = async function(filter, options = {}) {
+    if (typeof filter === 'number' || typeof filter === 'string') {
+      filter = { id: +filter };
     }
 
-    options = options || { ts: 10 };
+    await Fliplet();
+ 
+    const containers = await Promise.all(Object.values(dynamicContainerInstances));
+    const objectMatch = (obj, filter) => Object.keys(filter).every(key => obj[key] === filter[key]);
+    const container = filter ? containers.find(c => objectMatch(c, filter)) : containers[0];
 
-    return Fliplet().then(function() {
-      return Promise.all(Object.values(dynamicContainerInstances)).then(function(containers) {
-        var container;
+    // Containers can render over time, so we need to retry later in the process
+    if (!container) {
+      if (options.ts > 5000) {
+        return Promise.reject(`Dynamic Container instance not found after ${Math.ceil(options.ts / 1000)} seconds.`);
+      }
 
-        if (typeof filter === 'undefined') {
-          container = containers.length ? containers[0] : undefined;
-        } else {
-          container = _.find(containers, filter);
-        }
+      if (options.ts === undefined) {
+        options.ts = 10;
+      } else {
+        options.ts *= 1.5; // increase ts by 50% every time
+      }
 
-        if (!container) {
-          if (options.ts > 5000) {
-            return Promise.reject('Container not found after ' + Math.ceil(options.ts / 1000) + ' seconds.');
-          }
+      await new Promise(resolve => setTimeout(resolve, options.ts)); // sleep
 
-          // Containers can render over time, so we need to retry later in the process
-          return new Promise(function(resolve) {
-            setTimeout(function() {
-              options.ts = options.ts * 1.5;
+      return Fliplet.DynamicContainer.get(filter, options);
+    }
 
-              Fliplet.DynamicContainer.get(filter, options).then(resolve);
-            }, options.ts);
-          });
-        }
-
-        return container;
-      });
-    });
+    return container;
   };
 
   Fliplet.DynamicContainer.getAll = function(filter) {
