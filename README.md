@@ -1,4 +1,4 @@
-# Fliplet Dynamic Container Widget
+# Fliplet Data container Widget
 
 ## Development
 

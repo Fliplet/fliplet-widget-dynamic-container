@@ -58,7 +58,7 @@
     // Containers can render over time, so we need to retry later in the process
     if (!container) {
       if (options.ts > 5000) {
-        return Promise.reject(`Dynamic Container instance not found after ${Math.ceil(options.ts / 1000)} seconds.`);
+        return Promise.reject(`Data container instance not found after ${Math.ceil(options.ts / 1000)} seconds.`);
       }
 
       if (options.ts === undefined) {
