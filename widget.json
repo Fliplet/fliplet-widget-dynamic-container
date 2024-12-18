@@ -6,7 +6,7 @@
   "icon": "img/icon.png",
   "tags": ["type:component", "category:layout", "beta:true"],
   "provider_only": false,
-  "references": ["content:richContent"],
+  "references": ["content:richContent", "dataSourceId:dataSource"],
   "settings": {
     "interfaceWidgetPackage": "com.fliplet.helper-configuration",
     "asyncRendering": true,
