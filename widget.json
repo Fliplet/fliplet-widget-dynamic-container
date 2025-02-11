@@ -14,10 +14,13 @@
   },
   "html_tag": "div",
   "interface": {
-    "assets": ["js/interface.js"]
+    "assets": [
+      "js/interface.js", 
+      "css/global.css"
+    ]
   },
   "build": {
     "dependencies": ["fliplet-core", "fliplet-datasources"],
-    "assets": ["js/build.js"]
+    "assets": ["js/build.js", "css/global.css"]
   }
 }
