@@ -1,10 +1,14 @@
 .mode-interact .view-is-empty {
-  border: none!important;
-  color: #6A6868!important;
+  border: none !important;
+  color: #6a6868 !important;
   font-family: "Open Sans", sans-serif;
   font-size: 12px;
   padding: 15px;
   text-align: center;
-  padding: 0!important;
-  display: block!important;
+  padding: 0 !important;
+  display: block !important;
+}
+
+[data-widget-package="com.fliplet.dynamic-container"] {
+  width: 100%;
 }
