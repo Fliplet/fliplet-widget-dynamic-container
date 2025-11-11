@@ -20,7 +20,7 @@
     ]
   },
   "build": {
-    "dependencies": ["fliplet-core", "fliplet-datasources"],
+    "dependencies": ["fliplet-core", "fliplet-datasources", "lodash"],
     "assets": ["js/build.js", "css/global.css"]
   }
 }
