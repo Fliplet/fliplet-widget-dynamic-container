@@ -20,7 +20,14 @@
     ]
   },
   "build": {
-    "dependencies": ["fliplet-core", "fliplet-datasources"],
-    "assets": ["js/build.js", "css/global.css"]
+    "dependencies": [
+      "fliplet-core",
+      "fliplet-utils",
+      "fliplet-datasources"
+    ],
+    "assets": [
+      "js/build.js",
+      "css/global.css"
+   ]
   }
 }

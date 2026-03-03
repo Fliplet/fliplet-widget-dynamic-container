@@ -86,7 +86,7 @@
           return containers;
         }
 
-        return _.filter(containers, filter);
+        return Fliplet.Utils.filter(containers, filter);
       });
     });
   };
